@@ -165,7 +165,7 @@ if page == "Application":
 
     try:
         if sample:
-            st.markdown("""[download_link](https://gist.github.com/giandata/e0b5c2d2e71d4fd4388295eb5b71aeeb)""")
+            st.markdown("""[download_link](https://github.com/sunilgiri7/Forecast-app/blob/main/sample%20_forecast%20_data.csv)""")
 
     except:
         if input:

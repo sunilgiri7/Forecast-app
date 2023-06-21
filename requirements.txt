@@ -1,0 +1,9 @@
+pandas
+pystan
+holidays
+fbprophet
+prophet
+plotly
+altair
+streamlit
+numpy
