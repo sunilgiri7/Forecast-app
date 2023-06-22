@@ -6,7 +6,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import streamlit as st
-from streamlit import cache
+from streamlit import cache_data
 import json
 import holidays
 import prophet
@@ -161,12 +161,10 @@ if page == "Application":
 
     if input is None:
         st.write("Or use sample dataset to try the application")
-        sample = st.checkbox("Download sample data from Github")
-
+    sample = st.checkbox("Download sample data from Github")
     try:
         if sample:
             st.markdown("""[download_link](https://github.com/sunilgiri7/Forecast-app/blob/main/sample%20_forecast%20_data.csv)""")
-
     except:
         if input:
             with st.spinner("Loading data..."):
