@@ -6,7 +6,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import streamlit as st
-from streamlit import cache_data
+from streamlit import cache
 import json
 import holidays
 import prophet
@@ -35,10 +35,10 @@ st.set_page_config(page_title="Forecast_App",
 tabs = ['Application', 'About']
 page = st.sidebar.radio("Tabs", tabs)
 
-@st.cache_data(persist=False,
-          allow_output_mutation=True,
-          suppress_st_warning=True,
-          show_spinner=True)
+# @st.cache(persist=False,
+#           allow_output_mutation=True,
+#           suppress_st_warning=True,
+#           show_spinner=True)
 def load_csv():
     df_input = pd.DataFrame()
     df_input = pd.read_csv(input, sep=None, engine='python', encoding='utf-8',parse_dates=True,
