@@ -2,6 +2,7 @@
 
 ## This web app is developed with streamlit and prophet
 Front end application to forecast your data: [Application Link](https://sunilgiri7-forecast-app-forecastapp-jgzz7s.streamlit.app/)
+
 If you want to learn basic forecasting technique in prophet: [Prophet forecasting notebook link](https://github.com/sunilgiri7/Forecast-app/blob/main/prophet_implementation.ipynb)
 
 
