@@ -35,10 +35,7 @@ st.set_page_config(page_title="Forecast_App",
 tabs = ['Application', 'About']
 page = st.sidebar.radio("Tabs", tabs)
 
-# @st.cache(persist=False,
-#           allow_output_mutation=True,
-#           suppress_st_warning=True,
-#           show_spinner=True)
+@st.cache_data
 def load_csv():
     df_input = pd.DataFrame()
     df_input = pd.read_csv(input, sep=None, engine='python', encoding='utf-8',parse_dates=True,
@@ -161,10 +158,12 @@ if page == "Application":
 
     if input is None:
         st.write("Or use sample dataset to try the application")
-    sample = st.checkbox("Download sample data from Github")
+        sample = st.checkbox("Download sample data from Github")
+
     try:
         if sample:
             st.markdown("""[download_link](https://github.com/sunilgiri7/Forecast-app/blob/main/sample%20_forecast%20_data.csv)""")
+
     except:
         if input:
             with st.spinner("Loading data..."):
@@ -380,7 +379,7 @@ if page == "Application":
 
         with st.expander("Metrics"):
             if input:
-                if input == 1:
+                if output == 1:
                     metrics = 0
                     if st.checkbox("Calculate metrics"):
                         with st.spinner("Cross validating..."):
