@@ -38,8 +38,7 @@ page = st.sidebar.radio("Tabs", tabs)
 @st.cache_data
 def load_csv():
     df_input = pd.DataFrame()
-    df_input = pd.read_csv(input, sep=None, engine='python', encoding='utf-8',parse_dates=True,
-                           infer_datetime_format=True)
+    df_input = pd.read_csv(input, sep=None, engine='python', encoding='utf-8',parse_dates=True)
     return df_input
 
 def prep_data(df):
@@ -160,43 +159,43 @@ if page == "Application":
         st.write("Or use sample dataset to try the application")
         sample = st.checkbox("Download sample data from Github")
 
-    try:
-        if sample:
-            st.markdown("""[download_link](https://github.com/sunilgiri7/Forecast-app/blob/main/sample%20_forecast%20_data.csv)""")
+        try:
+            if sample:
+                st.markdown("""[download_link](https://github.com/sunilgiri7/Forecast-app/blob/main/sample%20_forecast%20_data.csv)""")
 
-    except:
-        if input:
-            with st.spinner("Loading data..."):
-                df = load_csv()
+        except:
+            if input:
+                with st.spinner("Loading data..."):
+                    df = load_csv()
 
-                st.write("Columns:")
-                st.write(list(df.columns))
-                columns = list(df.columns)
+                    st.write("Columns:")
+                    st.write(list(df.columns))
+                    columns = list(df.columns)
 
+                    col1, col2 = st.columns(2)
+                    with col1:
+                        date_col = st.selectbox("Select data column", index=0, options=columns, key='date')
+                    with col2:
+                        metric_col = st.selectbox("Select values column", index=1, options=columns, key='values')
+
+                    df = prep_data(df)
+                    output = 0
+        if st.checkbox("Chart data", key='show'):
+            with st.spinner("Plotting data.."):
                 col1, col2 = st.columns(2)
                 with col1:
-                    date_col = st.selectbox("Select data column", index=0, options=columns, key='date')
-                with col2:
-                    metric_col = st.selectbox("Select values column", index=1, options=columns, key='values')
+                    st.dataframe(df)
+                with  col2:
+                    st.write("Dataframe description:")
+                    st.write(df.describe())
 
-                df = prep_data(df)
-                output = 0
-    if st.checkbox("Chart data", key='show'):
-        with st.spinner("Plotting data.."):
-            col1, col2 = st.columns(2)
-            with col1:
-                st.dataframe(df)
-            with  col2:
-                st.write("Dataframe description:")
-                st.write(df.describe())
-
-        try:
-            line_chart = alt.Chart(df).mark_line().encode(
-                x = 'ds:T',
-                y = "y:Q",tooltip=['ds:T', 'y:Q']).properties(title="Time series preview").interactive()
-            st.altair_chart(line_chart,use_container_width=True)
-        except:
-            st.line_chart(df['y'], use_container_width=True, height=300)
+            try:
+                line_chart = alt.Chart(df).mark_line().encode(
+                    x = 'ds:T',
+                    y = "y:Q",tooltip=['ds:T', 'y:Q']).properties(title="Time series preview").interactive()
+                st.altair_chart(line_chart,use_container_width=True)
+            except:
+                st.line_chart(df['y'], use_container_width=True, height=300)
 
     st.subheader("2. Parameters configuration 🛠️")
 
