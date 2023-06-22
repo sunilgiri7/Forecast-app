@@ -1,9 +1,10 @@
 # Forecast-app
 
-### This web app is developed with streamlit and prophet
-here is the application link: https://sunilgiri7-forecast-app-forecastapp-jgzz7s.streamlit.app/
+## This web app is developed with streamlit and prophet
+Front end application to forecast your data: [Application Link](https://sunilgiri7-forecast-app-forecastapp-jgzz7s.streamlit.app/)
 
-## 1. Configure the model settings
+
+### 1. Configure the model settings
 Once loaded the data, the app allow the configuration of multiple parameters:
 
 Horizon: the time in future to forecast. It is expressed in days.
@@ -12,30 +13,30 @@ Trend components: declare which trends want to discover and propagate. Daily sho
 Holidays: add holidays to the model. Available countries at the moment: Italy, Spain, France, United States, Germany, Ukraine.
 Hyperparameters: Change the scale of the changepoints or holidays. It impacts the flexibility of the model.
 
-## 2. Fit the model and predict future
+### 2. Fit the model and predict future
 Initialize the model with the settings configured above (Fit)
 Generate forecast (Predict): will plot forecast with standard Prophet charts
 Show components: shows finding about time components selected in point 2.
-## 3. Evaluate and validate prediction
+### 3. Evaluate and validate prediction
 Set the k-fold configuration: specify the initial timeframe to keep as training data, the horizon to predict and recurrency of the prediction as period.
 Calculate the metrics related to the cross-validatio. A dataframe will be generated and a plot of the selected metric will be created.
 
-## 4. Hyperparameter tuning
+### 4. Hyperparameter tuning
 Runs the model with all the combinations possible within the matrix of coefficients of scaling. It return the best combination of changepoint ans seasonality prior scale, which can be used to go back above at point 2 and embed in the model and create an optimized forecast.
 
-## 5. Export results
+### 5. Export results
 Export forecast(.csv) : will generate a link to download the dataframe with predictions and confidence intervals.
 Export model metrics (.csv): will generate a link to downloa d the dataframe or the cross-validation
 Export model configuration (.json): will export the configuration of the model for reproducibility of the results.
 
-### Fork In your machine, Here is installation process
-step1. conda create -n stan_env python=3.7
-step2. conda activate stan_env
+## Fork In your machine Here is installation process
+#### step1. conda create -n stan_env python=3.7
+#### step2. conda activate stan_env
 
 you need to install mingw-w64 compiler type:
-step3. conda install libpython m2w64-toolchain -c msys2
-step4. conda install numpy cython -c conda-forge
-step5. pip install pystan OR conda install pystan -c conda-forge
+#### step3. conda install libpython m2w64-toolchain -c msys2
+#### step4. conda install numpy cython -c conda-forge
+#### step5. pip install pystan OR conda install pystan -c conda-forge
 
 Now you are good to go :)
 
