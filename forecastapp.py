@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-import pystan
+# import pystan
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
