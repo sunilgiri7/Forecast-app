@@ -380,7 +380,7 @@ if page == "Application":
 
         with st.expander("Metrics"):
             if input:
-                if output == 1:
+                if input == 1:
                     metrics = 0
                     if st.checkbox("Calculate metrics"):
                         with st.spinner("Cross validating..."):
