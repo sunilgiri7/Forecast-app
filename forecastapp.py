@@ -35,7 +35,7 @@ st.set_page_config(page_title="Forecast_App",
 tabs = ['Application', 'About']
 page = st.sidebar.radio("Tabs", tabs)
 
-@st.cache(persist=False,
+@st.cache_data(persist=False,
           allow_output_mutation=True,
           suppress_st_warning=True,
           show_spinner=True)
