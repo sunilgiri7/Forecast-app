@@ -23,7 +23,7 @@ import plotly.graph_objs as go
 import plotly.figure_factory as ff
 import base64
 import itertools
-from datetime import datetime
+from datetime
 
 
 st.set_page_config(page_title="Forecast_App",
